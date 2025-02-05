@@ -4,7 +4,8 @@ from pybricks.hubs import EV3Brick
 from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.ev3devices import Motor
-from mindsensorsPYB import DIST_ToF
+
+from laser_sensor import LaserSensor
 
 ev3 = EV3Brick() # Create EV3 brick object
 left_motor = Motor(Port.A) # Create left motor with port a
@@ -20,14 +21,11 @@ drivebase = DriveBase(left_motor, right_motor, wheel_diameter=55.5, axle_track=1
 drivebase.settings(straight_speed=500, straight_acceleration=800, turn_rate=300, turn_acceleration=800)
 
 # Create a distance sensor object
-# This sensor can precisely read distance and return distance in a variety of units (inches, mm, etc.)
-dist_sensor = DIST_ToF(Port.S1)
+dist_sensor = LaserSensor(Port.S1)
 
-# Quick example usage of the distance sensor which prints out its distance readings in inches and millimeters
+# Quick example usage of the distance sensor
 def test_distance_sensor():
-    inches = dist_sensor.readToFin()
-    millimeters = dist_sensor.readToFmm()
-    print("Current distance is {} inches, which is {} millimeters.".format(inches, millimeters))
+    print("Current distance is " + dist_sensor.get_distance() + " millimeters.")
     ev3.speaker.beep()
 
 # Quick example usage of the drivebase which drives forward 1000 mm, turns around, then comes back
@@ -37,6 +35,7 @@ def test_drivebase():
     drivebase.straight(1000)
 
 # Main code of the program, which will be run when you press start
+# Write your additional code in here
 def main():
     print("Program is running...")
     test_distance_sensor()
