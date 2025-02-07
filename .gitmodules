@@ -1,0 +1,4 @@
+
+[submodule "laser_sensor"]
+	path = laser_sensor
+	url = https://github.com/JNetherwood-Imig/ev3-laser-sensor.git

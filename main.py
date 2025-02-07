@@ -5,7 +5,7 @@ from pybricks.parameters import Port
 from pybricks.robotics import DriveBase
 from pybricks.ev3devices import Motor
 
-from laser_sensor import LaserSensor
+from laser_sensor.laser_sensor import LaserSensor
 
 ev3 = EV3Brick() # Create EV3 brick object
 left_motor = Motor(Port.A) # Create left motor with port a
